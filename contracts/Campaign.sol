@@ -18,7 +18,7 @@ contract Campaign {
     Request[] public requests;
 
     modifier restrictedToManager() {
-        require(manager == msg.sender, "Permision denied");
+        require(manager == msg.sender, "Permission denied");
 
         _;
     }
