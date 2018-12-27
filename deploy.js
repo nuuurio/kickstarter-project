@@ -6,7 +6,7 @@ const provider = new HDWalletProvider(
     'tiger reason cross pony hockey cereal clutch roof office track pride captain',
     'https://ropsten.infura.io/v3/32dabf89368c462cb291ee0e5f39120c'
 );
-const web3 = new Web3(provider );
+const web3 = new Web3(provider);
 
 const deploy = async () => {
     const accounts = await web3.eth.getAccounts();

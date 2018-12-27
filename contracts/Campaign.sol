@@ -66,5 +66,4 @@ contract Campaign {
         require(requests[_index].complete, "Already finished");
         address(uint160(requests[_index].recipient)).transfer(address(this).balance);
     }
- 
 }
