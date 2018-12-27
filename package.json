@@ -1,0 +1,21 @@
+{
+  "name": "kickstarter-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --exit",
+    "deploy": "node deploy.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "mocha": "^5.2.0",
+    "solc": "^0.5.2"
+  },
+  "dependencies": {
+    "ganache-cli": "^6.2.4",
+    "truffle-hdwallet-provider": "^1.0.1",
+    "web3": "^1.0.0-beta.37"
+  }
+}
