@@ -1,7 +1,10 @@
 const HDWalletProvider = require('truffle-hdwallet-provider');
 const Web3 = require('web3');
-const interface = require('./compile').interface;
-const bytecode = require('./compile').bytecode;
+const campaignInterface = require('./compile').campaignData.interface;
+const campaignBytecode = require('./compile').campaignData.bytecode;
+const proxyInterface = require('./compile').proxyData.interface;
+const proxyBytecode = require('./compile').proxyData.bytecode;
+
 
 const provider = new HDWalletProvider(
     'tiger reason cross pony hockey cereal clutch roof office track pride captain',
@@ -14,10 +17,16 @@ const deploy = async () => {
     const accounts = await web3.eth.getAccounts();
     console.log(`Attempting to deploy from account ${accounts[0]}`);
 
-    const result = await new web3.eth.Contract(interface)
-        .deploy({ data: `0x${bytecode}`, arguments: [300] })
+    const campaignResult = await new web3.eth.Contract(campaignInterface)
+        .deploy({ data: `0x${campaignBytecode}`, arguments: [300] })
         .send({ gas: '5000000', from: accounts[0] });
-    console.log(`Contract deployed to ${result.options.address}`);
+    const campaignAddress = campaignResult.options.address;
+    console.log(`Campaign contract deployed to ${campaignResult.options.address}`);
+
+    const proxyResult = await new web3.eth.Contract(proxyInterface)
+        .deploy({ data: `0x${proxyBytecode}`, arguments: [campaignAddress] })
+        .send({ gas: '5000000', from: accounts[0] });
+    console.log(`Proxy contract deployed to ${proxyResult.options.address}`);
 }
 
 deploy();
