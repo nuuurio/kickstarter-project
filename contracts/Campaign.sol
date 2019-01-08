@@ -25,7 +25,7 @@ contract Campaign {
 
     constructor(uint _contribution) public {
         manager = msg.sender;
-        minimumContribution = _contribution * 1 ether;
+        minimumContribution = _contribution;
     }
 
     function contribute() public payable {
