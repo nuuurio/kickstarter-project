@@ -1,4 +1,4 @@
-require('events').EventEmitter.defaultMaxListeners = 20;
+require('events').EventEmitter.defaultMaxListeners = 30;
 
 const assert = require('assert');
 const ganache = require('ganache-cli');

@@ -1,4 +1,4 @@
-require('events').EventEmitter.defaultMaxListeners = 20;
+require('events').EventEmitter.defaultMaxListeners = 30;
 
 const assert = require('assert');
 const ganache = require('ganache-cli');
@@ -45,8 +45,15 @@ describe('Proxy', () =>{
     });
 
     it('Can set a new address', async () => {
-        await proxy.methods.setProxyAddress('0x5616aec77e534e414B081945b72E27A7B82636f').call();
+        campaign = await new web3.eth.Contract(campaignInterface)
+        .deploy({ data: `0x${campaignBytecode}`, arguments: [300] })
+        .send({ gas: '5000000', from: accounts[0] });
+
+        campaignAddress = campaign.options.address;
+
+        await proxy.methods.setProxyAddress(campaignAddress).send({ from: accounts[0], gas: "1000000" });
         const address = await proxy.methods.getProxyAddress().call();
-        assert.equal(address, '0x5616aec77e534e414B081945b72E27A7B82636f');
+
+        assert.equal(address, campaignAddress);
     });
 });
