@@ -1,11 +1,11 @@
 pragma solidity >=0.4.22 <0.6.0;
 
 // ----------------------------------------------------------------------------
-// '0Fucks' token contract
+// 'Simleon' token contract
 //
 // Deployed to : 0xeb341aB27F9082A0091bfd6d1f5DDB9634E288d6
-// Symbol      : 0FUCKS
-// Name        : 0 Fucks Token
+// Symbol      : §
+// Name        : Simoleon
 // Total supply: 100000000
 // Decimals    : 18
 //
@@ -99,7 +99,7 @@ contract Owned {
 // ERC20 Token, with the addition of symbol, name and decimals and assisted
 // token transfers
 // ----------------------------------------------------------------------------
-contract Token is ERC20Interface, Owned, SafeMath {
+contract SimoleonToken is ERC20Interface, Owned, SafeMath {
     string public symbol;
     string public  name;
     uint8 public decimals;
@@ -113,8 +113,8 @@ contract Token is ERC20Interface, Owned, SafeMath {
     // Constructor
     // ------------------------------------------------------------------------
     constructor() public {
-        symbol = "0FUCKS";
-        name = "0 Fucks Token";
+        symbol = "§";
+        name = "Simoleon";
         decimals = 18;
         _totalSupply = 100000000000000000000000000;
         balances[0xeb341aB27F9082A0091bfd6d1f5DDB9634E288d6] = _totalSupply;
