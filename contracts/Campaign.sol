@@ -65,7 +65,7 @@ contract Campaign {
     function finalizeRequest(uint _index) public restrictedToManager {
         require(requests[_index].complete, "Already finished");
         address(uint160(requests[_index].recipient)).transfer(address(this).balance);
-        payToApprovals(_index);
+        // payToApprovals(_index);
     }
 
     function payToApprovals(uint _index) public payable restrictedToManager {
