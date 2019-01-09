@@ -1,9 +1,14 @@
 const HDWalletProvider = require('truffle-hdwallet-provider');
 const Web3 = require('web3');
+
 const campaignInterface = require('./compile').campaignData.interface;
 const campaignBytecode = require('./compile').campaignData.bytecode;
+
 const proxyInterface = require('./compile').proxyData.interface;
 const proxyBytecode = require('./compile').proxyData.bytecode;
+
+const simoleonInterface = require('./compile').simoleonData.interface;
+const simoleonBytecode = require('./compile').simoleonData.bytecode;
 
 
 const provider = new HDWalletProvider(
@@ -27,6 +32,11 @@ const deploy = async () => {
         .deploy({ data: `0x${proxyBytecode}`, arguments: [campaignAddress] })
         .send({ gas: '5000000', from: accounts[0] });
     console.log(`Proxy contract deployed to ${proxyResult.options.address}`);
+
+    const simoleonResult = await new web3.eth.Contract(simoleonInterface)
+        .deploy({ data: `0x${simoleonBytecode}`, arguments: [] })
+        .send({ gas: '5000000', from: accounts[0] });
+    console.log(`Simoleon token contract deployed to ${simoleonResult.options.address}`);
 }
 
 deploy();

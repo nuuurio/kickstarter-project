@@ -15,7 +15,7 @@ contract Proxy {
         manager = msg.sender;
     }
 
-    function getProxyAddress() public view returns(address){
+    function getProxyAddress() public view returns (address){
         return campaignAddress;
     }
 
