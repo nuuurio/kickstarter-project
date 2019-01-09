@@ -33,10 +33,10 @@ const deploy = async () => {
         .send({ gas: '5000000', from: accounts[0] });
     console.log(`Proxy contract deployed to ${proxyResult.options.address}`);
 
-    const simoleonResult = await new web3.eth.Contract(simoleonInterface)
-        .deploy({ data: `0x${simoleonBytecode}`, arguments: [] })
-        .send({ gas: '5000000', from: accounts[0] });
-    console.log(`Simoleon token contract deployed to ${simoleonResult.options.address}`);
+    // const simoleonResult = await new web3.eth.Contract(simoleonInterface)
+    //     .deploy({ data: `0x${simoleonBytecode}`, arguments: [] })
+    //     .send({ gas: '5000000', from: accounts[0] });
+    // console.log(`Simoleon token contract deployed to ${simoleonResult.options.address}`);
 }
 
 deploy();
